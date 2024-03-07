@@ -1,5 +1,6 @@
 const express = require("express");
 require("./conn.js")
+const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const User = require('./models/userModles.js')
@@ -10,6 +11,16 @@ const router = express.Router();
 const bcrypt  = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const JWT_TOKEN = 'Hiten_Is_GoodBoy';
+const url = "mongodb+srv://hituladheds:kERflkfuZr81FvyR@cluster0.bfrr60r.mongodb.net/blogsApp"
+
+mongoose.connect(url)
+  .then(() => {
+    console.log('Connected to MongoDB Atlas');
+    // Your code here
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB Atlas:', error);
+  });
 
 
 app.use(express.json());
