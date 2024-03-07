@@ -6,14 +6,15 @@ const bodyParser = require('body-parser');
 const User = require('./models/userModles.js')
 const Blog =  require('./models/userBlogs.js')
 const app = express();
+const dotenv = require('dotenv');
 const port = process.env.PORT||8000
 const router = express.Router(); 
 const bcrypt  = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const JWT_TOKEN = 'Hiten_Is_GoodBoy';
-const url = "mongodb+srv://hituladheds:kERflkfuZr81FvyR@cluster0.bfrr60r.mongodb.net/blogsApp"
+dotenv.config();
 
-mongoose.connect(url)
+mongoose.connect(process.env.url)
   .then(() => {
     console.log('Connected to MongoDB Atlas');
     // Your code here
